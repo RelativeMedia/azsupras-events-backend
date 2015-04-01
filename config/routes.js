@@ -32,10 +32,32 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: 'homepage'
-  }
+  'get /': 'DashboardController.index',
+  'get /event': 'EventController.index',
+  'get /event/:id': 'EventController.find',
+  'get /event/create': 'EventController.create',
+  'post /event/create': 'EventController.createSave',
 
+  'get /login': 'AuthController.login',
+  'get /logout': 'AuthController.logout',
+  'get /register': 'AuthController.register',
+
+  'post /auth/local': 'AuthController.callback',
+  'post /auth/local/:action': 'AuthController.callback',
+
+  'get /auth/:provider': 'AuthController.provider',
+  'get /auth/:provider/callback': 'AuthController.callback',
+  'get /auth/:provider/:action': 'AuthController.callback',
+
+
+  /*****************************************************************************
+  *																																						 *
+  * API Driven Routes, public accessible                                       *
+  *																																						 *
+  * 
+
+  'get /api/event' : 'ApiController.eventIndex',
+  'get /api/event/:id' : 'ApiController.eventFind',
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

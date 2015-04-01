@@ -1,0 +1,19 @@
+{{#if errors}}
+  {{#each errors}}
+    {{ errors.error }}
+  {{/each}}
+{{/if}}
+
+
+<div id="fullscreen_bg" class="fullscreen_bg"/>
+<div class="container">
+	<form class="form-signin" action="/auth/local" method="post">
+		<h1 class="form-signin-heading text-muted">Sign In</h1>
+		<input type="text" name="identifier" class="form-control" placeholder="Username or Email" required="" autofocus="">
+		<input type="password" name="password" class="form-control" placeholder="Password" required="">
+		<button class="btn btn-lg btn-primary btn-block" type="submit">
+			Sign In
+		</button>
+	</form>
+
+</div>
