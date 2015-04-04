@@ -1,5 +1,26 @@
 <div class="container">
-
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Event Name</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each events}}
+        <tr>
+          <td>{{name}}</td>
+          <td>{{formatDate startDate 'short'}}</td>
+          <td>{{formatDate endDate 'short'}}</td>
+          <td><button class="btn btn-danger delete" data-id="{{id}}" data-item="event"><i class="fa fa-trash"></i></button></td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
   <div class="row">
     <a href="/event/create" class="btn btn-primary btn-lg">Create New Event</a>
   </div>

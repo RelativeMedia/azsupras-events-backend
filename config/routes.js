@@ -22,21 +22,13 @@
 
 module.exports.routes = {
 
-  /***************************************************************************
-  *                                                                          *
-  * Make the view located at `views/homepage.ejs` (or `views/homepage.jade`, *
-  * etc. depending on your default view engine) your home page.              *
-  *                                                                          *
-  * (Alternatively, remove this and add an `index.html` file in your         *
-  * `assets` directory)                                                      *
-  *                                                                          *
-  ***************************************************************************/
-
   'get /': 'DashboardController.index',
-  'get /event': 'EventController.index',
-  'get /event/:id': 'EventController.find',
-  'get /event/create': 'EventController.create',
-  'post /event/create': 'EventController.createSave',
+  'get /event/list': 'EventController.index',
+  'get /event/list/:id': 'EventController.find',
+  'get /event/create': {
+    view: 'events/create'
+  },
+  'post /event': 'EventController.save',
 
   'get /login': 'AuthController.login',
   'get /logout': 'AuthController.logout',
@@ -49,15 +41,27 @@ module.exports.routes = {
   'get /auth/:provider/callback': 'AuthController.callback',
   'get /auth/:provider/:action': 'AuthController.callback',
 
+  /***************************************************************************
+  *                                                                          *
+  * API Driven Routes, public accessible                                     *
+  *                                                                          *
+  ***************************************************************************/
 
-  /*****************************************************************************
-  *																																						 *
-  * API Driven Routes, public accessible                                       *
-  *																																						 *
-  * 
+    'get /api/event' : {
+      controller: 'ApiController',
+      action: 'eventIndex',
+      cors: {
+        origin: '*'
+      }
+    },
+    'get /api/event/:id' : {
+      controller: 'ApiController',
+      action: 'eventFind',
+      cors: {
+        origin: '*'
+      }
+    },
 
-  'get /api/event' : 'ApiController.eventIndex',
-  'get /api/event/:id' : 'ApiController.eventFind',
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

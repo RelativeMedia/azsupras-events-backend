@@ -35,6 +35,9 @@ var Event = {
     prices: {
       type: 'json'
     },
+    attending: {
+      type: 'json'
+    }
   }
 };
 

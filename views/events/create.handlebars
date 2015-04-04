@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <form action="/event/create" enctype="multipart/form-data" method="post" id="newEvent">
+      <form action="/event" name="newEvent" enctype="multipart/form-data" method="POST" id="newEvent">
         <div class="col-lg-6">
           <div class="col-lg-12">
             <div class="form-group">
@@ -11,18 +11,6 @@
             <div class="form-group">
               <label for="description">Event Description</label>
               <textarea name="description" class="form-control input-lg"></textarea>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="form-group">
-              <label for="titleImageLarge">Large Title Image</label>
-              <input type="file" name="titleImageLarge" class="form-control input-lg">
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="form-group">
-              <label for="titleImageSmall">Large Title Image</label>
-              <input type="file" name="titleImageSmall" class="form-control input-lg">
             </div>
           </div>
           <div class="col-lg-12">
@@ -59,7 +47,10 @@
           <div class="col-lg-12">
             <label>Address Information</label>
             <div class="form-group">
-              <input type="text" placeholder="Address" name="address" class="form-control input-lg">
+              <input type="text" placeholder="Location Name" name="address1" class="form-control input-lg">
+            </div>
+            <div class="form-group">
+              <input type="text" placeholder="Address" name="address2" class="form-control input-lg">
             </div>
             <div class="form-group">
               <input type="text" placeholder="City" name="city" class="form-control input-lg">
@@ -110,6 +101,18 @@
                   <span class="help-block">Use Format such as 12.99</span>
                 </div>
               </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="titleImageLarge">Large Title Image</label>
+              <input type="file" name="titleImageLarge" class="form-control input-lg" multiple="multiple">
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="titleImageSmall">Small Title Image</label>
+              <input type="file" name="titleImageSmall" class="form-control input-lg" multiple="multiple">
             </div>
           </div>
         </div>

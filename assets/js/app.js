@@ -12,6 +12,7 @@ function validatePrice(amount){
   var amountRegExp = new RegExp('^[+-]?[0-9]{1,3}(?:,?[0-9]{3})*\.[0-9]{2}$');
   return amountRegExp.test( amount );
 }
+
 window.prices = [];
 $('#addEventPricing').click(function(event){
   event.preventDefault();
@@ -34,4 +35,19 @@ $('#newEvent').submit(function(event){
   event.preventDefault();
   $('#pricing').val( JSON.stringify(prices) );
   this.submit();
+});
+
+
+$('.delete').click(function(event){
+  var $this = $(this);
+  var item = $this.data('item');
+  var id = $this.data('id');
+
+  $.ajax({
+    url: '/' + item + '/' + id,
+    type: 'DELETE'
+  }).done(function(xhr, req, status){
+    $this.closest('tr').slideUp('fast').remove();
+  });
+
 });

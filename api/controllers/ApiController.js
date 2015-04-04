@@ -1,18 +1,19 @@
-
+var async = require('async');
 
 var ApiController = {
-  eventindex: function(req, res){
+  eventIndex: function(req, res){
     Event.find().exec(function(err, events){
-      return res.json(events);
+      if(err) return res.send(500, err);
+      res.json(events);
     });
   },
 
-  eventfind: function(req, res){
+  EventFind: function(req, res){
     Event.findOne({ id: req.params.id }).exec(function(err, event){
-      if(err) return res.send(err);
-      return res.json(event);
+      if(err) return res.send(500, err);
+      res.json(event);
     });
-  }
+  },
 };
 
 module.exports = ApiController;
