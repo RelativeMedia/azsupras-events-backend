@@ -42,12 +42,18 @@ $('.delete').click(function(event){
   var $this = $(this);
   var item = $this.data('item');
   var id = $this.data('id');
+  var $modal = $('#confirm-delete-' + id);
 
-  $.ajax({
-    url: '/' + item + '/' + id,
-    type: 'DELETE'
-  }).done(function(xhr, req, status){
-    $this.closest('tr').slideUp('fast').remove();
+  $modal.modal('hide');
+
+  $modal.on('hidden.bs.modal', function (e) {
+    $.ajax({
+      url: '/' + item + '/' + id,
+      type: 'DELETE'
+    }).done(function(xhr, req, status){
+      $this.closest('tr').slideUp('fast').remove();
+    });
+
   });
 
 });

@@ -62,6 +62,14 @@ module.exports.routes = {
       }
     },
 
+    'post /api/checkout' : {
+      controller: 'ApiController',
+      action: 'checkout',
+      cors: {
+        origin: '*'
+      }
+    },
+
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

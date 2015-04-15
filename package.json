@@ -31,6 +31,7 @@
     "sails-disk": "~0.10.0",
     "sails-mongo": "^0.10.6",
     "skipper-s3": "^0.5.5",
+    "stripe": "^3.3.4",
     "validator": "^3.37.0"
   },
   "scripts": {

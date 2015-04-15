@@ -15,7 +15,31 @@
           <td>{{name}}</td>
           <td>{{formatDate startDate 'short'}}</td>
           <td>{{formatDate endDate 'short'}}</td>
-          <td><button class="btn btn-danger delete" data-id="{{id}}" data-item="event"><i class="fa fa-trash"></i></button></td>
+          <td>
+            <ul class="itemList">
+              <li><a href="/event/{{id}}" class="btn btn-primary"><i class="fa fa-link"></i></a></li>
+              <li>
+                <button class="btn btn-danger" data-toggle="modal" data-target="#confirm-delete-{{id}}"><i class="fa fa-trash"></i></button>
+                <div class="modal fade" id="confirm-delete-{{id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                Delete Event | {{name}}
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to delete the event "{{name}}"?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                <a class="btn btn-danger btn-ok delete" data-id="{{id}}" data-item="event">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </li>
+              <li><a href="/event/edit/{{id}}" class="btn btn-warning"><i class="fa fa-pencil"></i></a></li>
+            </ul>
+          </td>
         </tr>
         {{/each}}
       </tbody>
