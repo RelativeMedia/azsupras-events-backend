@@ -25,9 +25,7 @@ module.exports.routes = {
   'get /': 'DashboardController.index',
   'get /event/list': 'EventController.index',
   'get /event/list/:id': 'EventController.find',
-  'get /event/create': {
-    view: 'events/create'
-  },
+  'get /event/create': 'EventController.create',
   'post /event': 'EventController.save',
 
   'get /login': 'AuthController.login',

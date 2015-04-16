@@ -28,6 +28,10 @@ var EventController = {
     });
   },
 
+  create: function(req, res){
+    res.view('events/create');
+  },
+
   save: function(req, res){
     var events = req.body;
     var content = marked(events.content);
