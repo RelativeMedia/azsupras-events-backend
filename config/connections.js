@@ -46,5 +46,11 @@ module.exports.connections = {
     port: 27017,
     database: 'azsupras_events_dev'
   },
-
+  mandrill: {
+    host: 'smtp.mandrillapp.com',
+    port: 587,
+  },
+  stripe: {
+    currency: "usd"
+  }
 };

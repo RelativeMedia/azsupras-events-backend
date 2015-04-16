@@ -35,8 +35,18 @@ var Event = {
     prices: {
       type: 'json'
     },
+    staticMap: {
+      type: 'string',
+    },
+    facebookEvent: {
+      type: 'string',
+    },
+    forumLink: {
+      type: 'string',
+    },
     attending: {
-      type: 'json'
+      type: 'integer',
+      defaultsTo: 0,
     }
   }
 };

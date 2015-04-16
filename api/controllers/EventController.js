@@ -1,4 +1,16 @@
 var async = require('async');
+var gm = require('googlemaps');
+var marked = require('marked');
+marked.setOptions({
+  renderer: new marked.Renderer(),
+  gfm: true,
+  tables: true,
+  breaks: false,
+  pedantic: false,
+  sanitize: true,
+  smartLists: true,
+  smartypants: false
+});
 
 var EventController = {
 
@@ -18,13 +30,19 @@ var EventController = {
 
   save: function(req, res){
     var events = req.body;
+    var content = marked(events.content);
+    console.log(content);
+    var fullAddress = events.address1 + ', ' + events.address2  + ' ' + events.city + ', ' + events.state + ' ' + events.zipcode;
+    console.log(fullAddress);
+    var staticMap = gm.staticMap(fullAddress, 13, '340x300', false, false, 'roadmap', [{'location': fullAddress}]);
 
     Event.create({
       name: events.name,
       description: events.description,
-      content: events.content,
+      content: content,
       startDate: events.startDate,
       endDate: events.endDate,
+      staticMap: staticMap,
       location: {
         name: events.address1,
         address: events.address2,

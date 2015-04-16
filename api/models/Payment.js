@@ -33,8 +33,16 @@ var Payment = {
     },
     transaction: {
       type: 'json',
-      required: true,
+      required: false,
     },
+    paid: {
+      type: 'boolean',
+      defaultsTo: false,
+    },
+    emailSent: {
+      type: 'boolean',
+      defaultsTo: false
+    }
   }
 };
 
