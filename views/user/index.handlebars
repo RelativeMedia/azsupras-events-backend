@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>username</th>
+          <th>Email Address</th>
+          <th>Created At</th>
+          <th>Updated At</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each users}}
+        <tr>
+          <td>{{username}}</td>
+          <td>{{email}}</td>
+          <td>{{createdAt}}</td>
+          <td>{{updatedAt}}</td>
+          <td>
+            <button class="btn btn-danger" data-toggle="modal" data-target="#confirm-delete-{{id}}"><i class="fa fa-trash"></i></button>
+            <div class="modal fade" id="confirm-delete-{{id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            Delete User | {{username}}
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to delete the user "{{username}}"?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            <a class="btn btn-danger btn-ok delete" data-id="{{id}}" data-item="user">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </li>
+          </td>
+        </tr>
+        {{/each}}
+        <tr>
+          <td colspan="5">
+            <a href="/user/create" class="btn btn-success btn-lg">Create New User</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
