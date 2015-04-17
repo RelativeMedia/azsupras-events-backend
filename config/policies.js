@@ -27,7 +27,12 @@ module.exports.policies = {
   ***************************************************************************/
 
   // '*': true,
+  // '*': ['passport'],
   '*': ['passport', 'sessionAuth'],
+
+  'attendee': {
+    'destroy': false
+  },
 
   'api': {
     '*': ['passport']

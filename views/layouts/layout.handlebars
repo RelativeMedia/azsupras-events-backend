@@ -29,6 +29,8 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li class="{{ isCurrentPage req 'dashboard.index' }}"><a href="/">Dashboard</a></li>
+            <li class="{{ isCurrentPage req 'event.index' }}"><a href="/event/list">Manage Events</a></li>
+            <li class="{{ isCurrentPage req 'attendee.index' }}"><a href="/attendee">Manage Attendees</a></li>
             <li class="{{ isCurrentPage req 'user.index' }}"><a href="/user">Manage Users</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
