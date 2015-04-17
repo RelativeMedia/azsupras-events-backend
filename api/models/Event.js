@@ -24,6 +24,10 @@ var Event = {
       type: 'datetime',
       required: true,
     },
+    markdownContent: {
+      type: 'string',
+      required: true,
+    },
     content: {
       type: 'string',
       required: true,
