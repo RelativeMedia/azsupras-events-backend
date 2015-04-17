@@ -1,4 +1,4 @@
-var Payment = {
+var Attendee = {
   // Enforce model schema in the case of schemaless databases
   schema: true,
   attributes: {
@@ -27,13 +27,11 @@ var Payment = {
       type: 'array',
       required: true,
     },
-    ip: {
-      type: 'string',
-      required: true,
+    payment: {
+      model: 'payment'
     },
-    transaction: {
-      type: 'json',
-      required: false,
+    event: {
+      model: 'event'
     },
     paid: {
       type: 'boolean',
@@ -46,4 +44,4 @@ var Payment = {
   }
 };
 
-module.exports = Payment;
+module.exports = Attendee;

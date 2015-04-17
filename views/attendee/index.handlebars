@@ -15,22 +15,22 @@
         </tr>
       </thead>
       <tbody>
-        {{#each payments}}
+        {{#each attendees}}
         <tr>
           <td>{{formatDate createdAt 'short'}}</td>
           <td>{{firstname}} {{lastname}}</td>
           <td>{{email}}</td>
           <td>{{phone}}</td>
           <td>{{username}}</td>
-          <td>{{transaction.id}}</td>
-          <td>$ {{ formatCurrency transaction.amount 100 2}}</td>
+          <td>{{payment.transaction.id}}</td>
+          <td>$ {{ formatCurrency payment.transaction.amount 100 2}}</td>
           <td>
             {{#each cart}}
               <a href="/event/list/{{id}}">{{name}}</a>
             {{/each}}
           </td>
           <td>
-          {{#if transaction.paid }}
+          {{#if payment.transaction.paid }}
           <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#details-{{id}}"><i class="fa fa-usd fa-lg"></i></button>
           {{else}}
           <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#details-{{id}}"><i class="fa fa-usd fa-lg"></i></button>
@@ -40,10 +40,10 @@
               <div class="modal-dialog">
                   <div class="modal-content">
                       <div class="modal-header">
-                          Viewing Details For Transaction {{transaction.id}}
+                          Viewing Details For Transaction {{payment.transaction.id}}
                       </div>
                       <div class="modal-body">
-                          <pre class="transactionDetails">{{toJson transaction}}</pre>
+                          <pre class="transactionDetails">{{toJson payment}}</pre>
                       </div>
                       <div class="modal-footer">
                           <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>

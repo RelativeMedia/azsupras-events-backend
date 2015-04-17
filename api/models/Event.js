@@ -44,10 +44,10 @@ var Event = {
     forumLink: {
       type: 'string',
     },
-    attending: {
-      type: 'integer',
-      defaultsTo: 0,
-    }
+    attendees: {
+      collection: 'attendee',
+      via: 'event'
+    },
   }
 };
 
