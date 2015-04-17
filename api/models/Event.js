@@ -24,6 +24,10 @@ var Event = {
       type: 'datetime',
       required: true,
     },
+    markdownContent: {
+      type: 'string',
+      required: true,
+    },
     content: {
       type: 'string',
       required: true,
@@ -44,10 +48,10 @@ var Event = {
     forumLink: {
       type: 'string',
     },
-    attending: {
-      type: 'integer',
-      defaultsTo: 0,
-    }
+    attendees: {
+      collection: 'attendee',
+      via: 'event'
+    },
   }
 };
 

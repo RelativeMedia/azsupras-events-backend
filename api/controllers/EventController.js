@@ -43,6 +43,7 @@ var EventController = {
     Event.create({
       name: events.name,
       description: events.description,
+      markdownContent: events.content,
       content: content,
       startDate: events.startDate,
       endDate: events.endDate,

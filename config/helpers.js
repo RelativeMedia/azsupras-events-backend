@@ -32,3 +32,22 @@ Handlebars.registerHelper('formatDate', function(datetime, format){
     return datetime;
   }
 });
+
+Handlebars.registerHelper('formatCurrency', function(value, divisor, decimal) {
+
+  if(typeof value !== 'integer'){
+    value = Number(value);
+  }
+
+  //
+  if(typeof divisor !== 'undefined'){
+    value = value/divisor;
+  }
+  value = value.toFixed(2);
+  return value.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+});
+
+
+Handlebars.registerHelper('toJson', function(context) {
+    return JSON.stringify(context, null, 2);
+});

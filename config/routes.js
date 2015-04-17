@@ -28,9 +28,14 @@ module.exports.routes = {
   'get /event/create': 'EventController.create',
   'post /event': 'EventController.save',
 
+  'get /user/create': 'UserController.create',
+  'post /user': 'UserController.save',
+  // 'get /user/list': 'UserController.index',
+  // 'get /user/list/:id': 'UserController.find',
+
   'get /login': 'AuthController.login',
   'get /logout': 'AuthController.logout',
-  'get /register': 'AuthController.register',
+  // 'get /register': 'AuthController.register',
 
   'post /auth/local': 'AuthController.callback',
   'post /auth/local/:action': 'AuthController.callback',
