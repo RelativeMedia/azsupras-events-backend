@@ -57,6 +57,7 @@ module.exports.routes = {
         origin: '*'
       }
     },
+    
     'get /api/event/:id' : {
       controller: 'ApiController',
       action: 'eventFind',
@@ -70,8 +71,16 @@ module.exports.routes = {
       action: 'checkout',
       cors: {
         origin: '*'
-      }
+      },
     },
+
+    'post /api/test/email' : {
+      controller: 'ApiController',
+      action: 'testEmail',
+      cors: {
+        origin: '*'
+      }
+    }
 
 
   /***************************************************************************
