@@ -39,85 +39,10 @@ var ApiController = {
 
 
   testEmail: function(req, res){
-    var checkout = req.body;
-
-
-    var testData = [{
-      amount: '20.00',
-      currency: 'usd',
-      cart:[{
-        name: '2nd Annual AZSupras BBQ ',
-        id: '55207a73295c856b099ce08e',
-        items: [],
-      }],
-      details:{
-        firstname: 'Mike',
-        lastname: 'DeVita',
-        phone: 6025414137,
-        email: 'm.devita@gmail.com',
-        username: 'mikedevita'
-      },
-      token: 'tok_15xQ5eFS8tx6P8nV73DLvqbE'
-    }];
-
-    var options = {
-      templateName: 'event-confirmation',
-      mergeLanguage: 'handlebars',
-      to: [],
-      globalMergeVars: [],
-      mergeVars: []
-    };
-
-    for (var i = 0; i < testData.length; i++) {
-      var data = testData[i];
-      options.to.push({
-        'name': data.details.firstname + ' ' + data.details.lastname,
-        'email': data.details.email
-      });
-
-      options.mergeVars.push({
-        'rcpt': data.details.email,
-        'vars': [
-          {
-            'name': 'firstname',
-            'content': data.details.firstname,
-          },
-          {
-            'name': 'lastname',
-            'content': data.details.lastname,
-          },
-          {
-            'name': 'email',
-            'content': data.details.email,
-          },
-          {
-            'name': 'phonenumber',
-            'content': data.details.phone,
-          },
-          {
-            'name': 'username',
-            'content': data.details.username,
-          },
-          {
-            'name': 'cartItems',
-            'content': data.cart[0].items,
-          },
-          {
-            'name': 'totalCost',
-            'content': data.amount,
-          }
-        ]
-      });
-
-    }
-
-    console.log(options);
-
-    Email.send(options, function(err, response){
-      if(err) return res.send(500, err);
+    Email.process(function(err, response){
+      if(err) console.error(err);
       res.json(response);
     });
-
   },
 
 
