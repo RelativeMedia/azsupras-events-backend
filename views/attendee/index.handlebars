@@ -30,12 +30,33 @@
             {{/each}}
           </td>
           <td>
-          {{#if payment.transaction.paid }}
-          <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#details-{{id}}"><i class="fa fa-usd fa-lg"></i></button>
+          {{#if emailSent }}
+          <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#resend-email-{{id}}"><i class="fa fa-envelope fa-sm"></i> Resend</button>
           {{else}}
-          <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#details-{{id}}"><i class="fa fa-usd fa-lg"></i></button>
+          <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#resend-email-{{id}}"><i class="fa fa-envelope fa-sm"></i> Resend</button>
+          {{/if}}
+          {{#if payment.transaction.paid }}
+          <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#details-{{id}}"><i class="fa fa-usd fa-lg"></i> Details</button>
+          {{else}}
+          <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#details-{{id}}"><i class="fa fa-usd fa-lg"></i> Details</button>
           {{/if}}
 
+          <div class="modal fade" id="resend-email-{{id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          Resend Event Confirmation For {{email}}
+                      </div>
+                      <div class="modal-body">
+                          Are you sure you want to resend the email for {{email}}?
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Yes</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
           <div class="modal fade" id="details-{{id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                   <div class="modal-content">
