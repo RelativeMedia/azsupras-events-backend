@@ -1,20 +1,39 @@
-var Mandrill = require('node-mandrill')(sails.config.connections.mandrill.apiKey);
-var _        = require('lodash');
+var Mandrill = require('mandrill-api/mandrill');
+var mandrill = new Mandrill.Mandrill(sails.config.connections.mandrill.apiKey);
+
 
 
 var EmailService = {
-  send: function(Message, cb){
+
+  send: function(Email, cb){
+
+    /**
+     * compose the message object for the mandrill emails
+     * @type {Object}
+     */
     var message = {
-      from_email: sails.config.connections.mandrill.from,
-      subject: sails.config.connections.mandrill.subject
+      from_name: sails.config.connections.mandrill.from.name,
+      from_email: sails.config.connections.mandrill.from.email,
+      to: Email.to,
+      merge_language: Email.mergeLanguage || 'handlebars',
+      merge: true,
+      global_merge_vars: Email.globalMergeVars,
+      merge_vars: Email.mergeVars,
+      subject: sails.config.connections.mandrill.subject,
     };
 
-    message = _.merge(message, Message);
-    Mandrill('/messages/send', {
-      message: message
-    },function (err, response){
-        if(err) return cb(err);
-        cb(null, response);
+    console.log(message);
+
+    mandrill.messages.sendTemplate({
+      'template_name': Email.templateName,
+      'template_content': Email.templateContent || '',
+      'message': message,
+      'async': sails.config.connections.mandrill.async || false,
+    }, function(response){
+      cb(null, response);
+    }, function(err){
+      console.error(err);
+      cb(err);
     });
   }
 };
