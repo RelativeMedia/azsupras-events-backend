@@ -10,7 +10,7 @@ var EventController = {
     });
   },
 
-  find: function(req, res){
+  findOne: function(req, res){
     Event.findOne({ id: req.params.id }).exec(function(err, result){
       if(err) return res.send(500, err);
       res.view('events/detail', { event: result });
