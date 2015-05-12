@@ -37,17 +37,7 @@ var ApiController = {
   },
 
 
-
-  testEmail: function(req, res){
-    Email.process(function(err, response){
-      if(err) console.error(err);
-      res.json(response);
-    });
-  },
-
-
   checkout: function(req, res){
-
     var checkout = req.body;
     console.log(checkout);
 
