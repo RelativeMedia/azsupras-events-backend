@@ -70,7 +70,7 @@ module.exports.bootstrap = function(cb) {
               attendee.emailSent = true;
               sails.log.debug('Updating Attendee: ' + attendee.email + ' as email sent');
               attendee.save(function(err){
-                sails.log9debug('Saving attendee: '  + attendee.email);
+                sails.log.debug('Saving attendee: '  + attendee.email);
                 if(err) console.error(err);
               });
             });
