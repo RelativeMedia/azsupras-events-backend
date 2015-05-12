@@ -77,7 +77,7 @@ var EventController = {
           smallTitleImage: sails.config.events.webPath + '/' + event.id + '/' + smallTitleImage[smallTitleImage.length-1],
         }).exec(function(err){
           if(err) return res.negotiate(err);
-          res.redirect('/event/list/' + event.id);
+          res.redirect('/event/' + event.id);
         });
       });
     });
