@@ -49,7 +49,7 @@ module.exports.bootstrap = function(cb) {
     }
   });
 
-  sails.log.info('Batch Emailing in ' + sails.config.connections.mandrill.sendInterval/1000 + ' seconds');
+  sails.log.info('Batch Emailing in ' + sails.config.connections.mandrill.sendInterval + ' seconds');
 
   setInterval(function(){
     sails.log.info('Batch Emailing');
@@ -81,7 +81,7 @@ module.exports.bootstrap = function(cb) {
         sails.log.info('No one to batch Email!');
       }
     });
-  }, sails.config.connections.mandrill.sendInterval);
+  }, sails.config.connections.mandrill.sendInterval * 1000);
 
   // It's very important to trigger this callback method when you are finished
   // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
