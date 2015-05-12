@@ -25,6 +25,7 @@ module.exports.routes = {
   'get /': 'DashboardController.index',
   'get /event/create': 'EventController.create',
   'post /event': 'EventController.save',
+  'post /attendee/resendemail/:id': 'AttendeeController.resendEmail',
 
   'get /user/create': 'UserController.create',
   'post /user': 'UserController.save',

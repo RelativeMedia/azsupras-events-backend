@@ -31,7 +31,7 @@
           </td>
           <td>
           {{#if emailSent }}
-          <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#resend-email-{{id}}"><i class="fa fa-envelope fa-sm"></i> Resend</button>
+          <button id="resendEmailButton" class="btn btn-success btn-sm" data-toggle="modal" data-target="#resend-email-{{id}}"><i class="fa fa-envelope fa-sm"></i> Resend</button>
           {{else}}
           <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#resend-email-{{id}}"><i class="fa fa-envelope fa-sm"></i> Resend</button>
           {{/if}}
@@ -52,7 +52,7 @@
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Yes</button>
+                        <button type="button" class="btn btn-primary resendEmail" data-id="{{id}}" data-item="attendee">Yes</button>
                       </div>
                   </div>
               </div>

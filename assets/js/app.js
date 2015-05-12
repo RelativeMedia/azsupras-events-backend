@@ -38,6 +38,28 @@ $('#newEvent').submit(function(event){
 });
 
 
+$('.resendEmail').click(function(event){
+  var $this = $(this);
+  var item = $this.data('item');
+  var id = $this.data('id');
+  var $modal = $('#resend-email-' + id);
+
+  $modal.modal('hide');
+
+  $modal.on('hidden.bs.modal', function (e) {
+    $.ajax({
+      url: '/' + item + '/resendemail/' + id,
+      type: 'POST'
+    }).done(function(xhr, req, status){
+      console.log(xhr, req);
+      $('#resendEmailButton').removeClass('btn-success');
+      $('#resendEmailButton').addClass('btn-danger');
+    });
+
+  });
+
+});
+
 $('.delete').click(function(event){
   var $this = $(this);
   var item = $this.data('item');
