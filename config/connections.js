@@ -33,6 +33,9 @@ module.exports.connections = {
     port: 27017,
     database: 'azsupras_events_dev'
   },
+  test: {
+    adapter: 'sails-memory',
+  },
   prodMongoServer: {
     adapter: 'sails-mongo',
     host: 'localhost',
