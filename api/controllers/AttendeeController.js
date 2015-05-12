@@ -7,6 +7,16 @@ var AttendeeController = {
       res.view('attendee/index', { attendees: result });
     });
     //res.json({ message: 'This Feature Is Not Implemented Yet' });
-  }
+  },
+  resendEmail: function(req, res){
+
+    Attendee.update(req.params.id, {
+      emailSent: false
+    }).exec(function(err){
+      if(err) return res.send(500, err);
+      res.send(200);
+    });
+
+  },
 };
 module.exports = AttendeeController;
