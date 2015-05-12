@@ -23,13 +23,11 @@
 module.exports.routes = {
 
   'get /': 'DashboardController.index',
-  'get /event/list': 'EventController.index',
-  'get /event/list/:id': 'EventController.find',
   'get /event/create': 'EventController.create',
   'post /event': 'EventController.save',
 
-  'get /user/create': 'UserController.create',
-  'post /user': 'UserController.save',
+  // 'get /user/create': 'UserController.create',
+  // 'post /user': 'UserController.save',
   // 'get /user/list': 'UserController.index',
   // 'get /user/list/:id': 'UserController.find',
 
@@ -50,39 +48,17 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-    'get /api/event' : {
-      controller: 'ApiController',
-      action: 'eventIndex',
-      cors: {
-        origin: '*'
-      }
-    },
-    
-    'get /api/event/:id' : {
-      controller: 'ApiController',
-      action: 'eventFind',
-      cors: {
-        origin: '*'
-      }
-    },
+  'get /v1/event': {
+    controller: 'ApiController',
+    action: 'eventFind',
+    cors: '*'
+  },
 
-    'post /api/checkout' : {
-      controller: 'ApiController',
-      action: 'checkout',
-      cors: {
-        origin: '*'
-      },
-    },
-
-    'post /api/test/email' : {
-      controller: 'ApiController',
-      action: 'testEmail',
-      cors: {
-        origin: '*'
-      }
-    }
-
-
+  'get /v1/event/:id': {
+    controller: 'ApiController',
+    action: 'eventFindOne',
+    cors: '*'
+  },
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
