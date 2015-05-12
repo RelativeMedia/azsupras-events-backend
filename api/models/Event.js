@@ -22,11 +22,8 @@ var Event = {
       type: 'string',
       required: true,
     },
-    largeTitleImage: {
-      type: 'string',
-    },
-    smallTitleImage: {
-      type: 'string'
+    titleImage: {
+      type: 'json',
     },
     startDate: {
       type: 'datetime',
