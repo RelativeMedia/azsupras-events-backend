@@ -59,6 +59,12 @@ module.exports.routes = {
     action: 'eventFindOne',
     cors: '*'
   },
+
+  'post /v1/checkout': {
+    controller: 'ApiController',
+    action: 'checkout',
+    cors: '*'
+  },
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
