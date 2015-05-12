@@ -3,8 +3,8 @@ var stripe = require("stripe")(sails.config.connections.stripe.apiKey);
 
 
 var ApiController = {
-  eventIndex: function(req, res){
 
+  eventFind: function(req, res){
     Event.find().exec(function(err, events){
 
       //append the attendeeCounts
@@ -25,7 +25,7 @@ var ApiController = {
     });
   },
 
-  EventFind: function(req, res){
+  EventFindOne: function(req, res){
     Event.findOne({ id: req.params.id }).exec(function(err, event){
       if(err) return res.send(500, err);
       Attendee.count().where({ event: event.id }).exec(function(err, count){
