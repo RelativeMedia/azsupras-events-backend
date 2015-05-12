@@ -3,8 +3,8 @@ var stripe = require("stripe")(sails.config.connections.stripe.apiKey);
 
 
 var ApiController = {
-  eventIndex: function(req, res){
 
+  eventFind: function(req, res){
     Event.find().exec(function(err, events){
 
       //append the attendeeCounts
@@ -25,7 +25,7 @@ var ApiController = {
     });
   },
 
-  EventFind: function(req, res){
+  EventFindOne: function(req, res){
     Event.findOne({ id: req.params.id }).exec(function(err, event){
       if(err) return res.send(500, err);
       Attendee.count().where({ event: event.id }).exec(function(err, count){
@@ -36,8 +36,8 @@ var ApiController = {
     });
   },
 
-  checkout: function(req, res){
 
+  checkout: function(req, res){
     var checkout = req.body;
     console.log(checkout);
 
@@ -56,6 +56,7 @@ var ApiController = {
           console.error(err);
           return res.send(500, err);
         }
+
         Payment.create({
           ip: req.connection.remoteAddress,
           attendees: attendee.id
@@ -73,34 +74,21 @@ var ApiController = {
               return res.send(500, err);
             }
 
-            console.log(charge.paid);
-
             payment.transaction = charge;
             attendee.paid = charge.paid;
             attendee.payments = payment.id;
+
             payment.save(function(err){
               if(err) console.error(err);
+
+              attendee.save(function(err){
+                if(err) console.error(err);
+              });
+
             });
 
-            Email.send({
-              to: [{
-                email: req.body.details.email,
-                name: req.body.firstname + ' ' + req.body.lastname,
-              }],
-              text: 'Congrats!'
-            }, function(err, response){
-              if(err) {
-                console.error(err);
-              }else{
-
-                attendee.emailSent = true;
-                attendee.save(function(err){
-                  if(err) console.error(err);
-                });
-
-              }
-            });
             res.json(payment);
+
           });
         });
       });

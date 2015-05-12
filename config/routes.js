@@ -23,15 +23,13 @@
 module.exports.routes = {
 
   'get /': 'DashboardController.index',
-  'get /event/list': 'EventController.index',
-  'get /event/list/:id': 'EventController.find',
   'get /event/create': 'EventController.create',
   'post /event': 'EventController.save',
 
   'get /user/create': 'UserController.create',
   'post /user': 'UserController.save',
-  // 'get /user/list': 'UserController.index',
-  // 'get /user/list/:id': 'UserController.find',
+  'get /user/list': 'UserController.index',
+  'get /user/list/:id': 'UserController.find',
 
   'get /login': 'AuthController.login',
   'get /logout': 'AuthController.logout',
@@ -50,30 +48,23 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-    'get /api/event' : {
-      controller: 'ApiController',
-      action: 'eventIndex',
-      cors: {
-        origin: '*'
-      }
-    },
-    'get /api/event/:id' : {
-      controller: 'ApiController',
-      action: 'eventFind',
-      cors: {
-        origin: '*'
-      }
-    },
+  'get /v1/event': {
+    controller: 'ApiController',
+    action: 'eventFind',
+    cors: '*'
+  },
 
-    'post /api/checkout' : {
-      controller: 'ApiController',
-      action: 'checkout',
-      cors: {
-        origin: '*'
-      }
-    },
+  'get /v1/event/:id': {
+    controller: 'ApiController',
+    action: 'eventFindOne',
+    cors: '*'
+  },
 
-
+  'post /v1/checkout': {
+    controller: 'ApiController',
+    action: 'checkout',
+    cors: '*'
+  },
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

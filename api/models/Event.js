@@ -1,3 +1,15 @@
+var marked = require('marked');
+marked.setOptions({
+  renderer: new marked.Renderer(),
+  gfm: true,
+  tables: true,
+  breaks: false,
+  pedantic: false,
+  sanitize: true,
+  smartLists: true,
+  smartypants: false
+});
+
 var Event = {
   // Enforce model schema in the case of schemaless databases
   schema: true,
@@ -10,11 +22,8 @@ var Event = {
       type: 'string',
       required: true,
     },
-    largeTitleImage: {
-      type: 'string',
-    },
-    smallTitleImage: {
-      type: 'string'
+    titleImage: {
+      type: 'json',
     },
     startDate: {
       type: 'datetime',
@@ -30,7 +39,6 @@ var Event = {
     },
     content: {
       type: 'string',
-      required: true,
     },
     location: {
       type: 'json',
@@ -52,6 +60,11 @@ var Event = {
       collection: 'attendee',
       via: 'event'
     },
+  },
+  beforeCreate: function(values, cb){
+    var content = marked(values.markdownContent);
+    values.content = content;
+    cb();
   }
 };
 

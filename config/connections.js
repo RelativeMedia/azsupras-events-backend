@@ -22,6 +22,7 @@
 module.exports.connections = {
   mandrill: {
     host: 'smtp.mandrillapp.com',
+    sendInterval: 600, //in seconds
     port: 587,
   },
   stripe: {
@@ -33,6 +34,10 @@ module.exports.connections = {
     port: 27017,
     database: 'azsupras_events_dev'
   },
+  test: {
+    adapter: 'sails-memory',
+  },
+
   prodMongoServer: {
     adapter: 'sails-mongo',
     host: 'localhost',
